@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг»
 
 * Студент: [Katerina Ponomareva](https://up.htmlacademy.ru/javascript/22/user/929085).
-* Наставник: `Неизвестно`.
+* Наставник: Мария Наг.
 
 ---
 
