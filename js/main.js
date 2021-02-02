@@ -5,11 +5,12 @@ const getRandomIntInclusive = function (min, max) {
   return Math.floor(Math.random() * unclear + min);
 }
 
-console.log(getRandomIntInclusive (4.89, 4.89));
+getRandomIntInclusive(2.456, 7.09);
+
 
 const getRandomFloatInclusive = function (min, max, floatLength) {
   let unclear = (max - min + 1);
   return +(Math.random() * unclear + min).toFixed(floatLength);
 }
 
-console.log(getRandomFloatInclusive (4.89, 4.89, 5));
+getRandomFloatInclusive(5.098, 3.789, 2);
