@@ -1,16 +1,24 @@
+'use strict';
+
 const getRandomIntInclusive = function (min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  let unclear = (max - min + 1);
-  return Math.floor(Math.random() * unclear + min);
+
+  if (min >= 0 && max >= 0) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  } else {return false;
+  }
 }
 
-getRandomIntInclusive(2.456, 7.09);
+getRandomIntInclusive(10.09, 0.09);
 
 
 const getRandomFloatInclusive = function (min, max, floatLength) {
-  let unclear = (max - min + 1);
-  return +(Math.random() * unclear + min).toFixed(floatLength);
+
+  if (min >= 0 && max >= 0 && floatLength >= 0) {
+    return +(Math.random() * (max - min + 1) + min).toFixed(floatLength);
+  } else {return false;
+  }
 }
 
-getRandomFloatInclusive(5.098, 3.789, 2);
+getRandomFloatInclusive(5.098, 3.789, 7);
