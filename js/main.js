@@ -1,6 +1,6 @@
 'use strict';
 
-const getRandomIntInclusive = function (min, max) {
+const getRandom = function (min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
 
@@ -10,10 +10,10 @@ const getRandomIntInclusive = function (min, max) {
   }
 }
 
-getRandomIntInclusive(10.09, 0.09);
+getRandom(10.09, 0.09);
 
 
-const getRandomFloatInclusive = function (min, max, floatLength) {
+const getRandomFloat = function (min, max, floatLength) {
 
   if (min >= 0 && max >= 0 && floatLength >= 0) {
     return +(Math.random() * (max - min + 1) + min).toFixed(floatLength);
@@ -21,4 +21,4 @@ const getRandomFloatInclusive = function (min, max, floatLength) {
   }
 }
 
-getRandomFloatInclusive(5.098, 3.789, 7);
+getRandomFloat(5.098, 3.789, 7);
