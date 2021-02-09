@@ -1,24 +1,36 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-debugger */
-/* eslint-disable no-console */
-const getRandomIntInclusive = function(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
+'use strict';
 
-  if (min >= 0 && max >= 0) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  } else {
-    return false;
-  }
+const AVATAR_INDEX = {
+  min: 1,
+  max: 8,
 };
 
-const getRandomFloatInclusive = function(min, max, floatDigits) {
+const LOCATION_X = {
+  min: 35.65000,
+  max: 35.70000,
+};
 
-  if (min >= 0 && max >= 0 && floatDigits >= 0) {
-    return +(Math.random() * (max - min + 1) + min).toFixed(floatDigits);
-  } else {
-    return false;
-  }
+const LOCATION_Y = {
+  min: 139.70000,
+  max: 139.80000,
+};
+
+const FLOAT_DIGITS = 5;
+
+const PRICE = {
+  min: 100,
+  max: 1000,
+};
+
+const ROOMS = {
+  min: 1,
+  max: 50,
+};
+
+const GUESTS = {
+  min: 1,
+  max: 50,
 };
 
 const TITLES_LIST = [
@@ -27,27 +39,11 @@ const TITLES_LIST = [
   'Enjoy Sunsets at Fully Equipped 2BR Condo at the Beach.',
 ];
 
-const TYPES_LIST = [
-  'palace',
-  'flat',
-  'house',
-  'bungalow',
-];
+const TYPES_LIST = ['palace', 'flat', 'house', 'bungalow'];
 
-const CHECKIN_TIME_LIST = [
-  '12:00',
-  '13:00',
-  '14:00',
-];
+const CHECKIN_TIME_LIST = ['12:00', '13:00', '14:00'];
 
-const FEATURES_LIST = [
-  'wifi',
-  'dishwasher',
-  'parking',
-  'washer',
-  'elevator',
-  'conditioner',
-];
+const FEATURES_LIST = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
 
 const DESCRIPTIONS_LIST = [
   'This bright loft is perfect to relax, just up the road from the heart of the city.',
@@ -63,21 +59,58 @@ const PHOTOS_LIST = [
 
 const SIMILAR_LISTINGS_COUNT = 10;
 
-const generateRandomValue = (array) => array[getRandomIntInclusive(0, array.length -1)];
-const generateRandomList = (array) => array.slice(getRandomIntInclusive(0, array.length));
+const getRandomIntInclusive = function(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+
+  if (min >= 0 && max > min) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  } else {
+    return false;
+  }
+};
+
+const getRandomFloatInclusive = function(min, max, floatDigits) {
+
+  if (min >= 0 && max > min && floatDigits > 0) {
+    return +(Math.random() * (max - min) + min).toFixed(floatDigits);
+  } else {
+    return false;
+  }
+};
+
+const generateRandomValue = (array) => array[getRandomIntInclusive(0, array.length - 1)];
+
+
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    let temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array;
+}
+
+const generateRandomList = (shuffleArray) => shuffleArray.slice(getRandomIntInclusive(0, shuffleArray.length));
 
 const createListing = () => {
+  const location = {
+    x: getRandomFloatInclusive(LOCATION_X.min, LOCATION_X.max, FLOAT_DIGITS),
+    y: getRandomFloatInclusive(LOCATION_Y.min, LOCATION_Y.max, FLOAT_DIGITS),
+  };
+
   return {
     author: {
-      avatar: 'img/avatars/user' + '0' + getRandomIntInclusive(1, 8) + '.png',
+      avatar: 'img/avatars/user0' + getRandomIntInclusive(AVATAR_INDEX.min, AVATAR_INDEX.max) + '.png',
     },
     offer: {
       title: generateRandomValue(TITLES_LIST),
-      address: getRandomFloatInclusive(35.65000, 35.70000, 5) + ', ' + getRandomFloatInclusive(139.70000, 139.80000, 5),
-      price: getRandomIntInclusive(100, 1000),
+      address: location.x + ', ' + location.y,
+      price: getRandomIntInclusive(PRICE.min, PRICE.max),
       type: generateRandomValue(TYPES_LIST),
-      rooms: getRandomIntInclusive(1, 50),
-      guests: getRandomIntInclusive(1, 50),
+      rooms: getRandomIntInclusive(ROOMS.min, ROOMS.max),
+      guests: getRandomIntInclusive(GUESTS.min, GUESTS.max),
       checkin: generateRandomValue(CHECKIN_TIME_LIST),
       checkout: generateRandomValue(CHECKIN_TIME_LIST),
       features: generateRandomList(FEATURES_LIST),
@@ -85,14 +118,10 @@ const createListing = () => {
       photos: generateRandomList(PHOTOS_LIST),
     },
     location: {
-      x: getRandomFloatInclusive(35.65000, 35.70000, 5),
-      y: getRandomFloatInclusive(139.70000, 139.80000, 5),
+      x: location.x,
+      y: location.y,
     },
   }
 };
 
-console.log(createListing());
-
 const similarListings = new Array(SIMILAR_LISTINGS_COUNT).fill(null).map(() => createListing());
-
-console.log(similarListings);
