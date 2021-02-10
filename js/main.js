@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 'use strict';
 
 const AVATAR_INDEX = {
@@ -79,10 +78,11 @@ const getRandomFloatInclusive = function(min, max, floatDigits) {
   }
 };
 
-const generateRandomValue = (array) => array[getRandomIntInclusive(0, array.length - 1)];
+const generateRandomValue = function(array) {
+  return array[getRandomIntInclusive(0, array.length - 1)];
+};
 
-
-const shuffleArray = (array) => {
+const shuffleArray = function(array) {
   for (let i = array.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
     let temp = array[i];
@@ -90,9 +90,11 @@ const shuffleArray = (array) => {
     array[j] = temp;
   }
   return array;
-}
+};
 
-const generateRandomList = (shuffleArray) => shuffleArray.slice(getRandomIntInclusive(0, shuffleArray.length));
+const generateRandomList = function(array) {
+  return array.slice(getRandomIntInclusive(0, array.length));
+};
 
 const createListing = () => {
   const location = {
@@ -113,9 +115,9 @@ const createListing = () => {
       guests: getRandomIntInclusive(GUESTS.min, GUESTS.max),
       checkin: generateRandomValue(CHECKIN_TIME_LIST),
       checkout: generateRandomValue(CHECKIN_TIME_LIST),
-      features: generateRandomList(FEATURES_LIST),
+      features: generateRandomList(shuffleArray(FEATURES_LIST)),
       description: generateRandomValue(DESCRIPTIONS_LIST),
-      photos: generateRandomList(PHOTOS_LIST),
+      photos: generateRandomList(shuffleArray(PHOTOS_LIST)),
     },
     location: {
       x: location.x,
@@ -125,3 +127,5 @@ const createListing = () => {
 };
 
 const similarListings = new Array(SIMILAR_LISTINGS_COUNT).fill(null).map(() => createListing());
+
+similarListings;
