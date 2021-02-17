@@ -19,7 +19,8 @@ import {
   CHECKIN_TIME_LIST,
   FEATURES_LIST,
   DESCRIPTIONS_LIST,
-  PHOTOS_LIST
+  PHOTOS_LIST,
+  SIMILAR_LISTINGS_COUNT
 } from './data.js';
 
 const createListing = () => {
@@ -52,4 +53,8 @@ const createListing = () => {
   }
 };
 
-export {createListing};
+const similarListings = new Array(SIMILAR_LISTINGS_COUNT).fill(null).map(() => createListing());
+
+//similarListings;
+
+export {similarListings};

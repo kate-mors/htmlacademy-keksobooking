@@ -22,12 +22,12 @@ const PRICE = {
 
 const ROOMS = {
   min: 1,
-  max: 50,
+  max: 20,
 };
 
 const GUESTS = {
   min: 1,
-  max: 50,
+  max: 20,
 };
 
 const TITLES_LIST = [
