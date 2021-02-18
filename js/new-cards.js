@@ -1,4 +1,6 @@
 import {similarListings} from './listing.js';
+import {ROOMS_LIST, GUESTS_LIST, ListingTypes} from './data.js';
+import {generateWordsEnding} from './util.js';
 
 const cardTemplate = document.querySelector('#card').content.querySelector('.popup');
 const cardContainer = document.querySelector('#map-canvas');
@@ -15,27 +17,6 @@ const generatePopupPhotos = function (array) {
     photosListFragment.appendChild(newPhoto);
   })
   return photosListFragment;
-}
-
-const ListingTypes = {
-  'flat': 'Квартира',
-  'bungalow': 'Бунгало',
-  'house': 'Дом',
-  'palace': 'Дворец',
-}
-
-const ROOMS_LIST = ['комната', 'комнаты', 'комнат'];
-const GUESTS_LIST = ['гостя', 'гостей', 'гостей']
-
-const generateWordsEnding = function (number, array) {
-  if (number === 1) {
-    return array[0];
-  } if (number > 1 && number < 5) {
-    return array [1];
-  }
-  if (number === 0 || number >=5) {
-    return array[2];
-  }
 }
 
 similarListings.forEach(function({author, offer}) {
