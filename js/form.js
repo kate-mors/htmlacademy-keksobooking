@@ -6,8 +6,11 @@ const adElementTimeIn = document.querySelector('#timein');
 const adElementTimeOut = document.querySelector('#timeout');
 
 adElementType.addEventListener('change', function () {
+  adElementPrice.min = pricesPerNight[adElementType.value];
   adElementPrice.placeholder = pricesPerNight[adElementType.value];
 });
+
+
 
 adElementTimeIn.addEventListener('change', function () {
   adElementTimeOut.value = adElementTimeIn.value;
