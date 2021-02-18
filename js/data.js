@@ -22,12 +22,12 @@ const PRICE = {
 
 const ROOMS = {
   min: 1,
-  max: 50,
+  max: 20,
 };
 
 const GUESTS = {
   min: 1,
-  max: 50,
+  max: 20,
 };
 
 const TITLES_LIST = [
@@ -56,6 +56,17 @@ const PHOTOS_LIST = [
 
 const SIMILAR_LISTINGS_COUNT = 10;
 
+const ROOMS_LIST = ['комната', 'комнаты', 'комнат'];
+
+const GUESTS_LIST = ['гостя', 'гостей', 'гостей'];
+
+const listingTypes = {
+  'flat': 'Квартира',
+  'bungalow': 'Бунгало',
+  'house': 'Дом',
+  'palace': 'Дворец',
+};
+
 export {
   AVATAR_INDEX,
   LOCATION_X,
@@ -70,5 +81,8 @@ export {
   FEATURES_LIST,
   DESCRIPTIONS_LIST,
   PHOTOS_LIST,
-  SIMILAR_LISTINGS_COUNT
+  SIMILAR_LISTINGS_COUNT,
+  ROOMS_LIST,
+  GUESTS_LIST,
+  listingTypes
 };
