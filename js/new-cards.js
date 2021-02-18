@@ -1,5 +1,5 @@
 import {similarListings} from './listing.js';
-import {ROOMS_LIST, GUESTS_LIST, ListingTypes} from './data.js';
+import {ROOMS_LIST, GUESTS_LIST, listingTypes} from './data.js';
 import {generateWordsEnding} from './util.js';
 
 const cardTemplate = document.querySelector('#card').content.querySelector('.popup');
@@ -25,7 +25,7 @@ similarListings.forEach(function({author, offer}) {
   similarPopup.querySelector('.popup__title').textContent = offer.title;
   similarPopup.querySelector('.popup__text--address').textContent = offer.address;
   similarPopup.querySelector('.popup__text--price').textContent = offer.price + ' ₽/ночь';
-  similarPopup.querySelector('.popup__type').textContent = ListingTypes[offer.type];
+  similarPopup.querySelector('.popup__type').textContent = listingTypes[offer.type];
   similarPopup.querySelector('.popup__text--capacity').textContent = offer.rooms + ' ' + generateWordsEnding(offer.rooms, ROOMS_LIST) + ' для ' + offer.guests + ' ' + generateWordsEnding(offer.guests, GUESTS_LIST);
   similarPopup.querySelector('.popup__text--time').textContent = 'Заезд после ' + offer.checkin +', выезд до ' + offer.checkout;
   similarPopup.querySelector('.popup__features').textContent = Object.values(offer.features).join(', ');

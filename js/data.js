@@ -60,7 +60,7 @@ const ROOMS_LIST = ['комната', 'комнаты', 'комнат'];
 
 const GUESTS_LIST = ['гостя', 'гостей', 'гостей'];
 
-const ListingTypes = {
+const listingTypes = {
   'flat': 'Квартира',
   'bungalow': 'Бунгало',
   'house': 'Дом',
@@ -84,5 +84,5 @@ export {
   SIMILAR_LISTINGS_COUNT,
   ROOMS_LIST,
   GUESTS_LIST,
-  ListingTypes
+  listingTypes
 };
