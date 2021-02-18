@@ -67,6 +67,13 @@ const listingTypes = {
   'palace': 'Дворец',
 };
 
+const pricesPerNight = {
+  'bungalow': '0',
+  'flat': '1000',
+  'house': '5000',
+  'palace': '10000',
+}
+
 export {
   AVATAR_INDEX,
   LOCATION_X,
@@ -84,5 +91,6 @@ export {
   SIMILAR_LISTINGS_COUNT,
   ROOMS_LIST,
   GUESTS_LIST,
-  listingTypes
+  listingTypes,
+  pricesPerNight
 };
