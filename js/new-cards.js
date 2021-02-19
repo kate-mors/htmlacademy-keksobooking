@@ -37,4 +37,4 @@ similarListings.forEach(function({author, offer}) {
   return listingsFragment.appendChild(similarPopup);
 })
 
-cardContainer.appendChild(listingsFragment.firstChild);
+//cardContainer.appendChild(listingsFragment.firstChild);
