@@ -5,17 +5,19 @@ const adElementPrice = document.querySelector('#price');
 const adElementTimeIn = document.querySelector('#timein');
 const adElementTimeOut = document.querySelector('#timeout');
 
-const selectChangeHandler = function () {
+const typeChangeHandler = function () {
   adElementPrice.min = pricesPerNight[adElementType.value];
   adElementPrice.placeholder = pricesPerNight[adElementType.value];
 };
 
-adElementType.addEventListener('change', selectChangeHandler);
-
-adElementTimeIn.addEventListener('change', function () {
+const onTimeInChange = function () {
   adElementTimeOut.value = adElementTimeIn.value;
-});
+};
 
-adElementTimeOut.addEventListener('change', function () {
+const onTimeOutChange = function () {
   adElementTimeIn.value = adElementTimeOut.value;
-});
+}
+
+adElementType.addEventListener('change', typeChangeHandler);
+adElementTimeIn.addEventListener('change', onTimeInChange);
+adElementTimeOut.addEventListener('change', onTimeOutChange);
