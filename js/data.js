@@ -60,6 +60,23 @@ const ROOMS_LIST = ['комната', 'комнаты', 'комнат'];
 
 const GUESTS_LIST = ['гостя', 'гостей', 'гостей'];
 
+const TOKYO_COORDINATES = {
+  x: 35.66093,
+  y: 139.78013,
+};
+
+const ZOOM = 12;
+
+const MAIN_PIN = {
+  size: 52,
+  anchor: 26,
+}
+
+const PIN = {
+  size: 40,
+  anchor: 20,
+}
+
 const listingTypes = {
   'flat': 'Квартира',
   'bungalow': 'Бунгало',
@@ -72,7 +89,7 @@ const pricesPerNight = {
   'flat': '1000',
   'house': '5000',
   'palace': '10000',
-}
+};
 
 export {
   AVATAR_INDEX,
@@ -91,6 +108,10 @@ export {
   SIMILAR_LISTINGS_COUNT,
   ROOMS_LIST,
   GUESTS_LIST,
+  TOKYO_COORDINATES,
+  ZOOM,
+  MAIN_PIN,
+  PIN,
   listingTypes,
   pricesPerNight
 };

@@ -1,10 +1,7 @@
-import {similarListings} from './listing.js';
 import {ROOMS_LIST, GUESTS_LIST, listingTypes} from './data.js';
 import {generateWordsEnding} from './util.js';
 
 const cardTemplate = document.querySelector('#card').content.querySelector('.popup');
-const cardContainer = document.querySelector('#map-canvas');
-const listingsFragment = new DocumentFragment();
 const popupPhotos = cardTemplate.querySelector('.popup__photos');
 
 const generatePopupPhotos = function (array) {
@@ -19,7 +16,7 @@ const generatePopupPhotos = function (array) {
   return photosListFragment;
 }
 
-similarListings.forEach(function({author, offer}) {
+const createSimilarPopup = function ({author, offer}) {
   const similarPopup = cardTemplate.cloneNode(true);
 
   similarPopup.querySelector('.popup__title').textContent = offer.title;
@@ -34,7 +31,7 @@ similarListings.forEach(function({author, offer}) {
   similarPopup.querySelector('.popup__photos').append(generatePopupPhotos(offer.photos));
   similarPopup.querySelector('.popup__avatar').src = author.avatar;
 
-  return listingsFragment.appendChild(similarPopup);
-})
+  return similarPopup;
+};
 
-//cardContainer.appendChild(listingsFragment.firstChild);
+export {createSimilarPopup};
