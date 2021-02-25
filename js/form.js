@@ -1,23 +1,23 @@
 import {pricesPerNight} from './data.js';
 
-const adElementType = document.querySelector('#type');
-const adElementPrice = document.querySelector('#price');
-const adElementTimeIn = document.querySelector('#timein');
-const adElementTimeOut = document.querySelector('#timeout');
+const elementType = document.querySelector('#type');
+const elementPrice = document.querySelector('#price');
+const elementTimeIn = document.querySelector('#timein');
+const elementTimeOut = document.querySelector('#timeout');
 
-const typeChangeHandler = function () {
-  adElementPrice.min = pricesPerNight[adElementType.value];
-  adElementPrice.placeholder = pricesPerNight[adElementType.value];
+const elementTypeChangeHandler = function () {
+  elementPrice.min = pricesPerNight[elementType.value];
+  elementPrice.placeholder = pricesPerNight[elementType.value];
 };
 
-const onTimeInChange = function () {
-  adElementTimeOut.value = adElementTimeIn.value;
+const elementTimeInChangeHandler = function () {
+  elementTimeOut.value = elementTimeIn.value;
 };
 
-const onTimeOutChange = function () {
-  adElementTimeIn.value = adElementTimeOut.value;
+const elementTimeOutChangeHandler = function () {
+  elementTimeIn.value = elementTimeOut.value;
 }
 
-adElementType.addEventListener('change', typeChangeHandler);
-adElementTimeIn.addEventListener('change', onTimeInChange);
-adElementTimeOut.addEventListener('change', onTimeOutChange);
+elementType.addEventListener('change', elementTypeChangeHandler);
+elementTimeIn.addEventListener('change', elementTimeInChangeHandler);
+elementTimeOut.addEventListener('change', elementTimeOutChangeHandler);

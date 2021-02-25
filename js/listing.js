@@ -31,11 +31,11 @@ const createListing = () => {
 
   return {
     author: {
-      avatar: 'img/avatars/user0' + getRandomIntInclusive(AVATAR_INDEX.min, AVATAR_INDEX.max) + '.png',
+      avatar: `img/avatars/user0${getRandomIntInclusive(AVATAR_INDEX.min, AVATAR_INDEX.max)}.png`,
     },
     offer: {
       title: generateRandomValue(TITLES_LIST),
-      address: location.x + ', ' + location.y,
+      address: `${location.x}, ${location.y}`,
       price: getRandomIntInclusive(PRICE.min, PRICE.max),
       type: generateRandomValue(TYPES_LIST),
       rooms: getRandomIntInclusive(ROOMS.min, ROOMS.max),

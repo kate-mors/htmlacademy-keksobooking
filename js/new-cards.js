@@ -24,10 +24,10 @@ similarListings.forEach(function({author, offer}) {
 
   similarPopup.querySelector('.popup__title').textContent = offer.title;
   similarPopup.querySelector('.popup__text--address').textContent = offer.address;
-  similarPopup.querySelector('.popup__text--price').textContent = offer.price + ' ₽/ночь';
+  similarPopup.querySelector('.popup__text--price').textContent = `${offer.price} ₽/ночь`;
   similarPopup.querySelector('.popup__type').textContent = listingTypes[offer.type];
-  similarPopup.querySelector('.popup__text--capacity').textContent = offer.rooms + ' ' + generateWordsEnding(offer.rooms, ROOMS_LIST) + ' для ' + offer.guests + ' ' + generateWordsEnding(offer.guests, GUESTS_LIST);
-  similarPopup.querySelector('.popup__text--time').textContent = 'Заезд после ' + offer.checkin +', выезд до ' + offer.checkout;
+  similarPopup.querySelector('.popup__text--capacity').textContent = `${offer.rooms} ${generateWordsEnding(offer.rooms, ROOMS_LIST)} для ${offer.guests} ${generateWordsEnding(offer.guests, GUESTS_LIST)}`;
+  similarPopup.querySelector('.popup__text--time').textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
   similarPopup.querySelector('.popup__features').textContent = Object.values(offer.features).join(', ');
   similarPopup.querySelector('.popup__description').textContent = offer.description;
   similarPopup.querySelector('.popup__photos').innerHTML = '';
