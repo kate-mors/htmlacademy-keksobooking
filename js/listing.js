@@ -53,6 +53,4 @@ const createListing = () => {
   }
 };
 
-const similarListings = new Array(SIMILAR_LISTINGS_COUNT).fill(null).map(() => createListing());
-
-export {similarListings};
+export const similarListings = new Array(SIMILAR_LISTINGS_COUNT).fill(null).map(() => createListing());

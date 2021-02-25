@@ -1,7 +1,7 @@
 const mapFilters = document.querySelector('.map__filters');
 const form = document.querySelector('.ad-form');
 
-const disableElements = function () {
+export const disableElements = function () {
   mapFilters.classList.add('map__filters--disabled');
   mapFilters.querySelectorAll('select').forEach(function (select) {
     select.disabled = true;
@@ -16,7 +16,7 @@ const disableElements = function () {
   });
 };
 
-const enableElements = function () {
+export const enableElements = function () {
   mapFilters.classList.remove('map__filters--disabled');
   mapFilters.querySelectorAll('select').forEach(function (select) {
     select.disabled = false;
@@ -32,5 +32,3 @@ const enableElements = function () {
 };
 
 disableElements();
-
-export {disableElements, enableElements};

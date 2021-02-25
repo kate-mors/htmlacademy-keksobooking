@@ -16,7 +16,7 @@ const generatePopupPhotos = function (array) {
   return photosListFragment;
 }
 
-const createSimilarPopup = function ({author, offer}) {
+export const createSimilarPopup = function ({author, offer}) {
   const similarPopup = cardTemplate.cloneNode(true);
 
   similarPopup.querySelector('.popup__title').textContent = offer.title;
@@ -33,5 +33,3 @@ const createSimilarPopup = function ({author, offer}) {
 
   return similarPopup;
 };
-
-export {createSimilarPopup};
