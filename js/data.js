@@ -60,6 +60,14 @@ export const ROOMS_LIST = ['комната', 'комнаты', 'комнат'];
 
 export const GUESTS_LIST = ['гостя', 'гостей', 'гостей'];
 
+//валидация формы
+
+export const TITLE_MIN_LENGTH = 30;
+
+export const TITLE_MAX_LENGTH = 100;
+
+export const PRICE_MAX = 1000000;
+
 //настройки координат карты
 
 export const TOKYO_COORDINATES = {
@@ -93,3 +101,15 @@ export const pricesPerNight = {
   'house': '5000',
   'palace': '10000',
 };
+
+export const capacity = {
+  '1 комната': 'для 1 гостя',
+  '2 комнаты': 'для 2 гостей» или «для 1 гостя»;
+3 комнаты — «для 3 гостей», «для 2 гостей» или «для 1 гостя»;
+100 комнат — «не для гостей».
+}
+
+option value="3" selected>для 3 гостей</option>
+            <option value="2">для 2 гостей</option>
+            <option value="1">для 1 гостя</option>
+            <option value="0">не для гостей</option>

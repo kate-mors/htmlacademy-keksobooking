@@ -1,9 +1,12 @@
-import {pricesPerNight} from './data.js';
+import {TITLE_MAX_LENGTH, TITLE_MIN_LENGTH, PRICE_MAX, pricesPerNight} from './data.js';
 
 const elementType = document.querySelector('#type');
 const elementPrice = document.querySelector('#price');
 const elementTimeIn = document.querySelector('#timein');
 const elementTimeOut = document.querySelector('#timeout');
+const elementTitle = document.querySelector('#title');
+const elementRoomsNumber = document.querySelector('#room_number');
+const elementGuestsNumber = document.querySelector('#capacity');
 
 const elementTypeChangeHandler = function () {
   elementPrice.min = pricesPerNight[elementType.value];
@@ -18,6 +21,39 @@ const elementTimeOutChangeHandler = function () {
   elementTimeIn.value = elementTimeOut.value;
 }
 
+const validateTitle = function () {
+  const valueLength = elementTitle.value.length;
+
+  if (valueLength < TITLE_MIN_LENGTH) {
+    elementTitle.setCustomValidity(`Ещё ${(TITLE_MIN_LENGTH - valueLength)} симв.`);
+  } else if (valueLength > TITLE_MAX_LENGTH) {
+    elementTitle.setCustomValidity(`Удалите лишние ${(valueLength - TITLE_MAX_LENGTH)} симв.`);
+  } else {
+    elementTitle.setCustomValidity('');
+  }
+
+  elementTitle.reportValidity();
+};
+
+const validatePrice = function () {
+  const value = elementPrice.value;
+
+  if (value > PRICE_MAX) {
+    elementPrice.setCustomValidity(`Максимальная цена за ночь ${PRICE_MAX}`);
+  } else if (value < pricesPerNight[elementType.value]) {
+    elementPrice.classList.add('invalid');
+    elementPrice.setCustomValidity(`Минимальная цена ${pricesPerNight[elementType.value]}`);
+  } else {
+    elementPrice.classList.remove('invalid');
+  }
+};
+
+const elementRoomsNumberChangeHandler = function () {
+  elementGuestsNumber.value =
+};
+
 elementType.addEventListener('change', elementTypeChangeHandler);
 elementTimeIn.addEventListener('change', elementTimeInChangeHandler);
 elementTimeOut.addEventListener('change', elementTimeOutChangeHandler);
+elementTitle.addEventListener('input', validateTitle);
+elementPrice.addEventListener ('input', validatePrice);
