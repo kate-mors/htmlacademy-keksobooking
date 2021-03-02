@@ -1,12 +1,32 @@
-import {TITLE_MAX_LENGTH, TITLE_MIN_LENGTH, PRICE_MAX, pricesPerNight} from './data.js';
+import {TITLE_MAX_LENGTH, TITLE_MIN_LENGTH, PRICE_MAX, pricesPerNight, capacity} from './data.js';
+//import {disable, enable} from './util.js';
 
 const elementType = document.querySelector('#type');
 const elementPrice = document.querySelector('#price');
 const elementTimeIn = document.querySelector('#timein');
 const elementTimeOut = document.querySelector('#timeout');
 const elementTitle = document.querySelector('#title');
-const elementRoomsNumber = document.querySelector('#room_number');
-const elementGuestsNumber = document.querySelector('#capacity');
+const elementRooms = document.querySelector('#room_number');
+const elementGuests = document.querySelector('#capacity');
+
+console.log(capacity[elementRooms.selectedIndex])
+
+const elementRoomsChangeHandler = function () {
+  const validateCapacity = capacity[elementRooms.selectedIndex].includes(elementGuests.selectedIndex)
+  const guestOption = elementGuests.querySelector('option');
+
+  if (!validateCapacity) {
+    console.log(false);
+    elementGuests.setCustomValidity('Некорректное значение! Проверьте количество гостей.');
+  } else if (validateCapacity) {
+    console.log(true);
+    guestOption[3].disabled = true;
+  } else {
+    console.log(true);
+    elementGuests.setCustomValidity('');
+  }
+  elementGuests.reportValidity();
+};
 
 const elementTypeChangeHandler = function () {
   elementPrice.min = pricesPerNight[elementType.value];
@@ -48,12 +68,10 @@ const validatePrice = function () {
   }
 };
 
-const elementRoomsNumberChangeHandler = function () {
-  elementGuestsNumber.value =
-};
-
 elementType.addEventListener('change', elementTypeChangeHandler);
 elementTimeIn.addEventListener('change', elementTimeInChangeHandler);
 elementTimeOut.addEventListener('change', elementTimeOutChangeHandler);
 elementTitle.addEventListener('input', validateTitle);
 elementPrice.addEventListener ('input', validatePrice);
+elementRooms.addEventListener('change', elementRoomsChangeHandler);
+elementGuests.addEventListener('change', elementRoomsChangeHandler);
