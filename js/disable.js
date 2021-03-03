@@ -30,5 +30,3 @@ export const enableElements = function () {
     fieldset.disabled = false;
   });
 };
-
-disableElements();

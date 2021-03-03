@@ -1,6 +1,6 @@
 /* global L:readonly */
 
-import {enableElements} from './disable.js';
+import {disableElements, enableElements} from './disable.js';
 import {similarListings} from './listing.js';
 import {
   FLOAT_DIGITS,
@@ -13,10 +13,7 @@ import {createSimilarPopup} from './new-cards.js';
 
 const addressField = document.querySelector('#address');
 
-if (window.L === undefined) {
-  alert('Карта временно не работает!');
-  delete window['L'];
-} else {
+if (window.L) {
   const map = L.map('map-canvas', {
     dragging: !L.Browser.mobile,
     tap: false,
@@ -86,4 +83,6 @@ if (window.L === undefined) {
       .addTo(map)
       .bindPopup(createSimilarPopup({author, offer}), {keepInView: true});
   });
+} else {
+  disableElements();
 }
