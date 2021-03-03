@@ -1,32 +1,28 @@
-const getRandomIntInclusive = function(min, max) {
+export const getRandomIntInclusive = function(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
 
   if (min >= 0 && max > min) {
     return Math.floor(Math.random() * (max - min + 1) + min);
-  } else {
-    return false;
   }
 };
 
-const getRandomFloatInclusive = function(min, max, floatDigits) {
+export const getRandomFloatInclusive = function(min, max, floatDigits) {
 
   if (min >= 0 && max > min && floatDigits > 0) {
     return +(Math.random() * (max - min) + min).toFixed(floatDigits);
-  } else {
-    return false;
   }
 };
 
-const generateRandomValue = function(array) {
+export const generateRandomValue = function(array) {
   return array[getRandomIntInclusive(0, array.length - 1)];
 };
 
-const generateRandomList = function(array) {
+export const generateRandomList = function(array) {
   return array.slice(getRandomIntInclusive(0, array.length));
 };
 
-const shuffleArray = function(array) {
+export const shuffleArray = function(array) {
   for (let i = array.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
     let temp = array[i];
@@ -36,7 +32,7 @@ const shuffleArray = function(array) {
   return array;
 };
 
-const generateWordsEnding = function (number, array) {
+export const generateWordsEnding = function (number, array) {
   if (number === 1) {
     return array[0];
   } if (number > 1 && number < 5) {
@@ -45,13 +41,4 @@ const generateWordsEnding = function (number, array) {
   if (number === 0 || number >=5) {
     return array[2];
   }
-}
-
-export {
-  getRandomIntInclusive,
-  getRandomFloatInclusive,
-  generateRandomValue,
-  generateRandomList,
-  shuffleArray,
-  generateWordsEnding
 };
