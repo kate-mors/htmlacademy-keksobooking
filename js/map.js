@@ -14,7 +14,7 @@ import {createSimilarPopup} from './new-cards.js';
 const addressField = document.querySelector('#address');
 
 if (window.L === undefined) {
-  alert("Карта временно не работает!");
+  alert('Карта временно не работает!');
   delete window['L'];
 } else {
   const map = L.map('map-canvas', {
