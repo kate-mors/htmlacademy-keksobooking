@@ -20,13 +20,13 @@ if (window.L) {
   });
 
   const mainPinIcon = L.icon({
-    iconUrl: '../img/main-pin.svg',
+    iconUrl: 'img/main-pin.svg',
     iconSize: [MAIN_PIN.size, MAIN_PIN.size],
     iconAnchor: [MAIN_PIN.anchor, MAIN_PIN.size],
   });
 
   const pinIcon = L.icon({
-    iconUrl: '../img/pin.svg',
+    iconUrl: 'img/pin.svg',
     iconSize: [PIN.size, PIN.size],
     iconAnchor: [PIN.anchor, PIN.size],
   });
