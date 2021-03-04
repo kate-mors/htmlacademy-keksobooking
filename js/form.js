@@ -1,5 +1,5 @@
 import {TITLE_MAX_LENGTH, TITLE_MIN_LENGTH, PRICE_MAX, pricesPerNight, capacity} from './data.js';
-import {disable, enable} from './util.js';
+//import {disable, enable} from './util.js';
 
 const elementType = document.querySelector('#type');
 const elementPrice = document.querySelector('#price');
@@ -13,10 +13,8 @@ const elementRoomsChangeHandler = function () {
   const validateCapacity = capacity[elementRooms.selectedIndex].includes(elementGuests.selectedIndex)
 
   if (validateCapacity) {
-    console.log(true);
     elementGuests.setCustomValidity('');
   } else {
-    console.log(false);
     elementGuests.setCustomValidity('Некорректное значение! Количество комнат не может быть меньше количества гостей.');
   }
   elementGuests.reportValidity();
