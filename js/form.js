@@ -1,5 +1,5 @@
 import {TITLE_MAX_LENGTH, TITLE_MIN_LENGTH, PRICE_MAX, pricesPerNight, capacity} from './data.js';
-//import {disable, enable} from './util.js';
+import {disable, enable} from './util.js';
 
 const elementType = document.querySelector('#type');
 const elementPrice = document.querySelector('#price');
@@ -9,21 +9,15 @@ const elementTitle = document.querySelector('#title');
 const elementRooms = document.querySelector('#room_number');
 const elementGuests = document.querySelector('#capacity');
 
-console.log(capacity[elementRooms.selectedIndex])
-
 const elementRoomsChangeHandler = function () {
   const validateCapacity = capacity[elementRooms.selectedIndex].includes(elementGuests.selectedIndex)
-  const guestOption = elementGuests.querySelector('option');
 
-  if (!validateCapacity) {
-    console.log(false);
-    elementGuests.setCustomValidity('Некорректное значение! Проверьте количество гостей.');
-  } else if (validateCapacity) {
-    console.log(true);
-    guestOption[3].disabled = true;
-  } else {
+  if (validateCapacity) {
     console.log(true);
     elementGuests.setCustomValidity('');
+  } else {
+    console.log(false);
+    elementGuests.setCustomValidity('Некорректное значение! Количество комнат не может быть меньше количества гостей.');
   }
   elementGuests.reportValidity();
 };
@@ -62,7 +56,7 @@ const validatePrice = function () {
     elementPrice.setCustomValidity(`Максимальная цена за ночь ${PRICE_MAX}`);
   } else if (value < pricesPerNight[elementType.value]) {
     elementPrice.classList.add('invalid');
-    elementPrice.setCustomValidity(`Минимальная цена ${pricesPerNight[elementType.value]}`);
+    elementPrice.setCustomValidity(`Для этого типа минимальная цена ${pricesPerNight[elementType.value]}`);
   } else {
     elementPrice.classList.remove('invalid');
   }
