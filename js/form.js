@@ -1,5 +1,4 @@
 import {TITLE_MAX_LENGTH, TITLE_MIN_LENGTH, PRICE_MAX, pricesPerNight, capacity} from './data.js';
-//import {disable, enable} from './util.js';
 
 const elementType = document.querySelector('#type');
 const elementPrice = document.querySelector('#price');
@@ -43,12 +42,11 @@ const validateTitle = function () {
   } else {
     elementTitle.setCustomValidity('');
   }
-
   elementTitle.reportValidity();
 };
 
 const validatePrice = function () {
-  const value = elementPrice.value;
+  const value = elementPrice.valueAsNumber;
 
   if (value > PRICE_MAX) {
     elementPrice.setCustomValidity(`Максимальная цена за ночь ${PRICE_MAX}`);
@@ -58,6 +56,7 @@ const validatePrice = function () {
   } else {
     elementPrice.classList.remove('invalid');
   }
+  elementPrice.reportValidity();
 };
 
 elementType.addEventListener('change', elementTypeChangeHandler);

@@ -96,10 +96,10 @@ export const listingTypes = {
 };
 
 export const pricesPerNight = {
-  'bungalow': '0',
-  'flat': '1000',
-  'house': '5000',
-  'palace': '10000',
+  'bungalow': 0,
+  'flat': 1000,
+  'house': 5000,
+  'palace': 10000,
 };
 
 export const capacity = {
@@ -108,10 +108,3 @@ export const capacity = {
   2: [0, 1, 2],
   3: [3],
 };
-
-/*export const capacity = {
-  0: ['1'],
-  '2': ['1', '2'],
-  '3': ['1', '2', '3'],
-  '4': ['0'],
-};*/
