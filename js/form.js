@@ -55,14 +55,25 @@ const validatePrice = function () {
     elementPrice.setCustomValidity(`Для этого типа минимальная цена ${pricesPerNight[elementType.value]}`);
   } else {
     elementPrice.classList.remove('invalid');
+    elementPrice.setCustomValidity('');
   }
   elementPrice.reportValidity();
 };
 
+const elementTitleInputHandler = function () {
+  validateTitle();
+}
+
+const elementPriceInputHandler = function () {
+  validatePrice();
+}
+
+
+
 elementType.addEventListener('change', elementTypeChangeHandler);
 elementTimeIn.addEventListener('change', elementTimeInChangeHandler);
 elementTimeOut.addEventListener('change', elementTimeOutChangeHandler);
-elementTitle.addEventListener('input', validateTitle);
-elementPrice.addEventListener ('input', validatePrice);
+elementTitle.addEventListener('input', elementTitleInputHandler);
+elementPrice.addEventListener ('input', elementPriceInputHandler);
 elementRooms.addEventListener('change', elementRoomsChangeHandler);
 elementGuests.addEventListener('change', elementRoomsChangeHandler);
