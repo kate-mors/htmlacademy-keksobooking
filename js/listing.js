@@ -23,10 +23,10 @@ import {
   SIMILAR_LISTINGS_COUNT
 } from './data.js';
 
-const createListing = () => {
+export const createListing = () => {
   const location = {
-    x: getRandomFloatInclusive(LOCATION_X.min, LOCATION_X.max, FLOAT_DIGITS),
-    y: getRandomFloatInclusive(LOCATION_Y.min, LOCATION_Y.max, FLOAT_DIGITS),
+    lat: getRandomFloatInclusive(LOCATION_X.min, LOCATION_X.max, FLOAT_DIGITS),
+    lng: getRandomFloatInclusive(LOCATION_Y.min, LOCATION_Y.max, FLOAT_DIGITS),
   };
 
   return {
@@ -47,8 +47,8 @@ const createListing = () => {
       photos: generateRandomList(shuffleArray(PHOTOS_LIST)),
     },
     location: {
-      x: location.x,
-      y: location.y,
+      lat: location.lat,
+      lng: location.lng,
     },
   }
 };

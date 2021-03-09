@@ -1,20 +1,22 @@
 /* global L:readonly */
 
-import {disableElements, enableElements} from './disable.js';
-import {similarListings} from './listing.js';
+import {disableElements} from './disable.js';
 import {
-  FLOAT_DIGITS,
   TOKYO_COORDINATES,
   ZOOM,
   MAIN_PIN,
   PIN
 } from './data.js';
-import {createSimilarPopup} from './new-cards.js';
+import {createSimilarCard} from './new-cards.js';
+import {onMapLoad, onMarkerMoved} from './on-event.js';
 
-const addressField = document.querySelector('#address');
+
+let map;
+let smallMarker;
+export let createSimilarPopups;
 
 if (window.L) {
-  const map = L.map('map-canvas', {
+  map = L.map('map-canvas', {
     dragging: !L.Browser.mobile,
     tap: false,
   });
@@ -39,27 +41,6 @@ if (window.L) {
     icon: mainPinIcon,
   });
 
-  const onMarkerMoved = function(evt) {
-    const address = {
-      lat: evt.target.getLatLng().lat,
-      lng: evt.target.getLatLng().lng,
-    };
-    addressField.value = address.lat.toFixed(FLOAT_DIGITS) + ', ' + address.lng.toFixed(FLOAT_DIGITS);
-  }
-
-  const onMapLoad = function() {
-    enableElements();
-    addressField.readOnly = true;
-    addressField.value = TOKYO_COORDINATES.x + ', ' + TOKYO_COORDINATES.y;
-  }
-
-  map
-    .on('load', onMapLoad)
-    .setView({
-      lat: TOKYO_COORDINATES.x,
-      lng: TOKYO_COORDINATES.y,
-    }, ZOOM);
-
   L.tileLayer(
     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -68,21 +49,35 @@ if (window.L) {
   ).addTo(map);
 
   mainMarker.addTo(map);
-
   mainMarker.on('moveend', onMarkerMoved)
 
-  similarListings.forEach(function({author, offer, location}) {
-    const smallMarker = L.marker({
-      lat: location.x,
-      lng: location.y,
-    }, {
-      draggable: false,
-      icon: pinIcon,
+  createSimilarPopups = function (similarListings) {
+    return similarListings.forEach(function(popup) {
+      smallMarker = L.marker({
+        lat: popup.location.lat,
+        lng: popup.location.lng,
+      },{
+        draggable: false,
+        icon: pinIcon,
+      });
+
+      smallMarker
+        .addTo(map)
+        .bindPopup(createSimilarCard(popup), {keepInView: true})
     });
-    smallMarker
-      .addTo(map)
-      .bindPopup(createSimilarPopup({author, offer}), {keepInView: true});
-  });
+  };
+
 } else {
   disableElements();
 }
+
+export const createMap = function () {
+  map
+    .on('load', () => {
+      onMapLoad();
+    })
+    .setView({
+      lat: TOKYO_COORDINATES.x,
+      lng: TOKYO_COORDINATES.y,
+    }, ZOOM);
+};

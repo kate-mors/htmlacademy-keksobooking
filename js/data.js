@@ -71,11 +71,11 @@ export const PRICE_MAX = 1000000;
 //настройки координат карты
 
 export const TOKYO_COORDINATES = {
-  x: 35.66093,
+  x: 35.69093,
   y: 139.78013,
 };
 
-export const ZOOM = 12.5;
+export const ZOOM = 10;
 
 export const MAIN_PIN = {
   size: 52,

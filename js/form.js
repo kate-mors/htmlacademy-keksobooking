@@ -7,6 +7,7 @@ const elementTimeOut = document.querySelector('#timeout');
 const elementTitle = document.querySelector('#title');
 const elementRooms = document.querySelector('#room_number');
 const elementGuests = document.querySelector('#capacity');
+export const addressField = document.querySelector('#address');
 
 const validateRoomsGuests = function () {
   const validateCapacity = capacity[elementRooms.selectedIndex].includes(elementGuests.selectedIndex)
