@@ -8,9 +8,8 @@ const elementTitle = document.querySelector('#title');
 const elementRooms = document.querySelector('#room_number');
 const elementGuests = document.querySelector('#capacity');
 
-const elementRoomsChangeHandler = function () {
+const validateRoomsGuests = function () {
   const validateCapacity = capacity[elementRooms.selectedIndex].includes(elementGuests.selectedIndex)
-
   if (validateCapacity) {
     elementGuests.setCustomValidity('');
   } else {
@@ -18,19 +17,6 @@ const elementRoomsChangeHandler = function () {
   }
   elementGuests.reportValidity();
 };
-
-const elementTypeChangeHandler = function () {
-  elementPrice.min = pricesPerNight[elementType.value];
-  elementPrice.placeholder = pricesPerNight[elementType.value];
-};
-
-const elementTimeInChangeHandler = function () {
-  elementTimeOut.value = elementTimeIn.value;
-};
-
-const elementTimeOutChangeHandler = function () {
-  elementTimeIn.value = elementTimeOut.value;
-}
 
 const validateTitle = function () {
   const valueLength = elementTitle.value.length;
@@ -60,6 +46,27 @@ const validatePrice = function () {
   elementPrice.reportValidity();
 };
 
+const elementRoomsChangeHandler = function () {
+  validateRoomsGuests(elementRooms);
+}
+
+const elementGuestsChangeHandler = function () {
+  validateRoomsGuests(elementGuests);
+};
+
+const elementTypeChangeHandler = function () {
+  elementPrice.min = pricesPerNight[elementType.value];
+  elementPrice.placeholder = pricesPerNight[elementType.value];
+};
+
+const elementTimeInChangeHandler = function () {
+  elementTimeOut.value = elementTimeIn.value;
+};
+
+const elementTimeOutChangeHandler = function () {
+  elementTimeIn.value = elementTimeOut.value;
+}
+
 const elementTitleInputHandler = function () {
   validateTitle();
 }
@@ -68,12 +75,10 @@ const elementPriceInputHandler = function () {
   validatePrice();
 }
 
-
-
 elementType.addEventListener('change', elementTypeChangeHandler);
 elementTimeIn.addEventListener('change', elementTimeInChangeHandler);
 elementTimeOut.addEventListener('change', elementTimeOutChangeHandler);
 elementTitle.addEventListener('input', elementTitleInputHandler);
 elementPrice.addEventListener ('input', elementPriceInputHandler);
 elementRooms.addEventListener('change', elementRoomsChangeHandler);
-elementGuests.addEventListener('change', elementRoomsChangeHandler);
+elementGuests.addEventListener('change', elementGuestsChangeHandler);
