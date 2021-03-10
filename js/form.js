@@ -47,11 +47,11 @@ const validatePrice = function () {
 };
 
 const elementRoomsChangeHandler = function () {
-  validateRoomsGuests(elementRooms);
+  validateRoomsGuests();
 }
 
 const elementGuestsChangeHandler = function () {
-  validateRoomsGuests(elementGuests);
+  validateRoomsGuests();
 };
 
 const elementTypeChangeHandler = function () {
