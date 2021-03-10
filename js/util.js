@@ -42,3 +42,17 @@ export const generateWordsEnding = function (number, array) {
     return array[2];
   }
 };
+
+export const disable = function (parent) {
+  for (let i = 0; i < parent.children.length; i++) {
+    const child = parent.children[i];
+    child.disabled = true;
+  }
+};
+
+export const enable = function (parent) {
+  for (let i = 0; i < parent.children.length; i++) {
+    const child = parent.children[i];
+    child.disabled = false
+  }
+};
