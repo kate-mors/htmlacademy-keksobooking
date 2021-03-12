@@ -74,4 +74,4 @@ export const showAlert = (message) => {
   setTimeout(() => {
     alertContainer.remove();
   }, 5000);
-}
+};
