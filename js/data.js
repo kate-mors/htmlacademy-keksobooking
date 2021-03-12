@@ -60,6 +60,11 @@ export const ROOMS_LIST = ['комната', 'комнаты', 'комнат'];
 
 export const GUESTS_LIST = ['гостя', 'гостей', 'гостей'];
 
+export const SLICE = {
+  min: 0,
+  max: 10,
+};
+
 //валидация формы
 
 export const TITLE_MIN_LENGTH = 30;
@@ -75,7 +80,7 @@ export const TOKYO_COORDINATES = {
   y: 139.78013,
 };
 
-export const ZOOM = 10;
+export const ZOOM = 9;
 
 export const MAIN_PIN = {
   size: 52,

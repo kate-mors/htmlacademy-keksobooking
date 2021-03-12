@@ -12,6 +12,7 @@ import {onMapLoad, onMarkerMoved} from './on-event.js';
 
 
 let map;
+let mainMarker;
 let smallMarker;
 export let createSimilarPopups;
 
@@ -33,7 +34,7 @@ if (window.L) {
     iconAnchor: [PIN.anchor, PIN.size],
   });
 
-  const mainMarker = L.marker({
+  mainMarker = L.marker({
     lat: TOKYO_COORDINATES.x,
     lng: TOKYO_COORDINATES.y,
   }, {
@@ -80,4 +81,8 @@ export const createMap = function () {
       lat: TOKYO_COORDINATES.x,
       lng: TOKYO_COORDINATES.y,
     }, ZOOM);
+};
+
+export const resetMainMarker = function () {
+  mainMarker.setLatLng([TOKYO_COORDINATES.x, TOKYO_COORDINATES.y]);
 };

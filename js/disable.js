@@ -1,7 +1,7 @@
-import {disable, enable} from './util.js'
+import {disable, enable} from './util.js';
+import {form} from './form.js';
 
 const mapFilters = document.querySelector('.map__filters');
-const form = document.querySelector('.ad-form');
 
 export const disableElements = function () {
   mapFilters.classList.add('map__filters--disabled');

@@ -1,5 +1,11 @@
+import {sendData} from './api.js';
 import {TITLE_MAX_LENGTH, TITLE_MIN_LENGTH, PRICE_MAX, pricesPerNight, capacity} from './data.js';
+import {onSuccess, onFormSend, onScreenClick, onEscClick, onErrorButtonClick} from './on-event.js';
+import {resetMainMarker} from './map.js';
 
+const mainBlock = document.querySelector('.promo');
+export const form = document.querySelector('.ad-form');
+const resetButton = document.querySelector('.ad-form__reset');
 const elementType = document.querySelector('#type');
 const elementPrice = document.querySelector('#price');
 const elementTimeIn = document.querySelector('#timein');
@@ -8,6 +14,9 @@ const elementTitle = document.querySelector('#title');
 const elementRooms = document.querySelector('#room_number');
 const elementGuests = document.querySelector('#capacity');
 export const addressField = document.querySelector('#address');
+const successMessage = document.querySelector('#success').content.querySelector('.success');
+const errorMessage = document.querySelector('#error').content.querySelector('.error');
+export const errorButton = errorMessage.querySelector('.error__button');
 
 const validateRoomsGuests = function () {
   const validateCapacity = capacity[elementRooms.selectedIndex].includes(elementGuests.selectedIndex)
@@ -49,7 +58,7 @@ const validatePrice = function () {
 
 const elementRoomsChangeHandler = function () {
   validateRoomsGuests();
-}
+};
 
 const elementGuestsChangeHandler = function () {
   validateRoomsGuests();
@@ -66,15 +75,28 @@ const elementTimeInChangeHandler = function () {
 
 const elementTimeOutChangeHandler = function () {
   elementTimeIn.value = elementTimeOut.value;
-}
+};
 
 const elementTitleInputHandler = function () {
   validateTitle();
-}
+};
 
 const elementPriceInputHandler = function () {
   validatePrice();
-}
+};
+
+const showSuccessMessage = function () {
+  mainBlock.appendChild(successMessage);
+  onScreenClick(successMessage);
+  onEscClick(successMessage);
+};
+
+const showErrorMessage = function () {
+  mainBlock.appendChild(errorMessage);
+  onScreenClick(errorMessage);
+  onEscClick(errorMessage);
+  onErrorButtonClick(errorMessage);
+};
 
 elementType.addEventListener('change', elementTypeChangeHandler);
 elementTimeIn.addEventListener('change', elementTimeInChangeHandler);
@@ -83,3 +105,23 @@ elementTitle.addEventListener('input', elementTitleInputHandler);
 elementPrice.addEventListener ('input', elementPriceInputHandler);
 elementRooms.addEventListener('change', elementRoomsChangeHandler);
 elementGuests.addEventListener('change', elementGuestsChangeHandler);
+
+resetButton.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  form.reset();
+  resetMainMarker();
+  onFormSend();
+});
+
+form.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  const formData = new FormData(evt.target);
+
+  sendData(formData)
+    .then(onSuccess)
+    .then(() => form.reset())
+    .then(() => resetMainMarker())
+    .then(() => onFormSend())
+    .then(() => showSuccessMessage())
+    .catch(() => showErrorMessage())
+});
