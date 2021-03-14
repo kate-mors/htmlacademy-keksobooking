@@ -18,7 +18,6 @@ const successMessageTemplate = document.querySelector('#success').content.queryS
 const successMessage = successMessageTemplate.cloneNode(true);
 const errorMessageTemplate = document.querySelector('#error').content.querySelector('.error');
 const errorMessage = errorMessageTemplate.cloneNode(true);
-export const errorButton = errorMessage.querySelector('.error__button');
 
 const validateRoomsGuests = function () {
   const validateCapacity = capacity[elementRooms.selectedIndex].includes(elementGuests.selectedIndex)
