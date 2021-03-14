@@ -1,19 +1,19 @@
 import {sendData} from './api.js';
-import {TITLE_MAX_LENGTH, TITLE_MIN_LENGTH, PRICE_MAX, pricesPerNight, capacity} from './data.js';
+import {TITLE_MAX_LENGTH, TITLE_MIN_LENGTH, PRICE_MAX, pricesPerNight, capacity, Z_INDEX} from './data.js';
 import {onSuccess, onFormSend, onScreenClick, onEscClick, onErrorButtonClick} from './on-event.js';
 import {resetMainMarker} from './map.js';
 
 const mainBlock = document.querySelector('.promo');
 export const form = document.querySelector('.ad-form');
-const resetButton = document.querySelector('.ad-form__reset');
-const elementType = document.querySelector('#type');
-const elementPrice = document.querySelector('#price');
-const elementTimeIn = document.querySelector('#timein');
-const elementTimeOut = document.querySelector('#timeout');
-const elementTitle = document.querySelector('#title');
-const elementRooms = document.querySelector('#room_number');
-const elementGuests = document.querySelector('#capacity');
-export const addressField = document.querySelector('#address');
+const resetButton = form.querySelector('.ad-form__reset');
+const elementType = form.querySelector('#type');
+const elementPrice = form.querySelector('#price');
+const elementTimeIn = form.querySelector('#timein');
+const elementTimeOut = form.querySelector('#timeout');
+const elementTitle = form.querySelector('#title');
+const elementRooms = form.querySelector('#room_number');
+const elementGuests = form.querySelector('#capacity');
+export const addressField = form.querySelector('#address');
 const successMessage = document.querySelector('#success').content.querySelector('.success');
 const errorMessage = document.querySelector('#error').content.querySelector('.error');
 export const errorButton = errorMessage.querySelector('.error__button');
@@ -87,12 +87,14 @@ const elementPriceInputHandler = function () {
 
 const showSuccessMessage = function () {
   mainBlock.appendChild(successMessage);
+  successMessage.style.zIndex = Z_INDEX;
   onScreenClick(successMessage);
   onEscClick(successMessage);
 };
 
 const showErrorMessage = function () {
   mainBlock.appendChild(errorMessage);
+  errorMessage.style.zIndex = Z_INDEX;
   onScreenClick(errorMessage);
   onEscClick(errorMessage);
   onErrorButtonClick(errorMessage);
@@ -113,7 +115,7 @@ resetButton.addEventListener('click', function (evt) {
   onFormSend();
 });
 
-form.addEventListener('submit', (evt) => {
+form.addEventListener('submit', function (evt) {
   evt.preventDefault();
   const formData = new FormData(evt.target);
 

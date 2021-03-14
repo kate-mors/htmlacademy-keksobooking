@@ -73,6 +73,8 @@ export const TITLE_MAX_LENGTH = 100;
 
 export const PRICE_MAX = 1000000;
 
+export const Z_INDEX = 500;
+
 //настройки координат карты
 
 export const TOKYO_COORDINATES = {
