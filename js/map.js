@@ -1,15 +1,9 @@
 /* global L:readonly */
 
 import {disableElements} from './disable.js';
-import {
-  TOKYO_COORDINATES,
-  ZOOM,
-  MAIN_PIN,
-  PIN
-} from './data.js';
+import {TOKYO_COORDINATES, ZOOM, MAIN_PIN, PIN} from './data.js';
 import {createSimilarCard} from './new-cards.js';
 import {onMapLoad, onMarkerMoved} from './on-event.js';
-
 
 let map;
 let mainMarker;

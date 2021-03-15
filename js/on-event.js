@@ -1,6 +1,6 @@
 import {showAlert} from './util.js';
 import {enableElements} from './disable.js';
-import {addressField, errorButton} from './form.js';
+import {addressField} from './form.js';
 import {TOKYO_COORDINATES, FLOAT_DIGITS} from './data.js';
 
 export const onMapLoad = function() {
@@ -25,33 +25,31 @@ export const onSuccess = function (response) {
   }
 };
 
-export const onFormSend = function () {
+export const onFormReset = function () {
   addressField.readOnly = true;
   addressField.value = TOKYO_COORDINATES.x + ', ' + TOKYO_COORDINATES.y;
-};
-
-export const onScreenClick = function (element) {
-  document.addEventListener('click', function () {
-    element.classList.add('visually-hidden');
-  });
 };
 
 const isEscEvent = function (evt) {
   return evt.key === 'Escape' || evt.key === 'Esc';
 };
 
-export const onEscClick = function (element) {
-  document.addEventListener('keydown', function (evt) {
+export const showMessage = function (parent, element) {
+  parent.appendChild(element);
+
+  const screenClickHandler = function () {
+    element.classList.add('visually-hidden');
+    element.removeEventListener('click', screenClickHandler);
+  }
+
+  const escClickHandler = function (evt) {
     if (isEscEvent(evt)) {
       evt.preventDefault();
       element.classList.add('visually-hidden');
+      document.removeEventListener('keydown', escClickHandler);
     }
-  });
-};
+  }
 
-export const onErrorButtonClick = function (element) {
-  errorButton.addEventListener('click', function (evt) {
-    evt.preventDefault();
-    element.classList.add('visually-hidden');
-  })
+  element.addEventListener('click', screenClickHandler);
+  document.addEventListener('keydown', escClickHandler);
 };
