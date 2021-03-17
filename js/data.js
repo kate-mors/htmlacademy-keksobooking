@@ -1,5 +1,3 @@
-import {getRandomIntInclusive, getRandomFloatInclusive, generateRandomValue, generateRandomList, shuffleArray} from './util.js';
-
 export const AVATAR_INDEX = {
   min: 1,
   max: 8,
