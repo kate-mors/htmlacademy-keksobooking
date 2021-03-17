@@ -4,6 +4,7 @@ import {disableElements} from './disable.js';
 import {TOKYO_COORDINATES, ZOOM, MAIN_PIN, PIN} from './data.js';
 import {createSimilarCard} from './new-cards.js';
 import {onMapLoad, onMarkerMoved} from './on-event.js';
+import { getData } from './api.js';
 
 let map;
 let mainMarker;
@@ -70,6 +71,9 @@ export const createMap = function () {
   map
     .on('load', () => {
       onMapLoad();
+      getData((data) => {
+        createSimilarPopups(data);
+      })
     })
     .setView({
       lat: TOKYO_COORDINATES.x,

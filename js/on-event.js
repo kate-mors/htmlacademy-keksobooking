@@ -1,12 +1,16 @@
-import {showAlert} from './util.js';
 import {enableElements} from './disable.js';
 import {addressField} from './form.js';
 import {TOKYO_COORDINATES, FLOAT_DIGITS} from './data.js';
+import { showAlert } from './alert.js';
+
+export const onFormReset = function () {
+  addressField.readOnly = true;
+  addressField.value = TOKYO_COORDINATES.x + ', ' + TOKYO_COORDINATES.y;
+};
 
 export const onMapLoad = function() {
   enableElements();
-  addressField.readOnly = true;
-  addressField.value = TOKYO_COORDINATES.x + ', ' + TOKYO_COORDINATES.y;
+  onFormReset();
 };
 
 export const onMarkerMoved = function (evt) {
@@ -17,17 +21,12 @@ export const onMarkerMoved = function (evt) {
   addressField.value = address.lat.toFixed(FLOAT_DIGITS) + ', ' + address.lng.toFixed(FLOAT_DIGITS);
 };
 
-export const onSuccess = function (response) {
+export const checkResponse = function (response) {
   if (response.ok) {
     return response;
   } else {
     showAlert('Не удалось получить данные. Попробуйте обновить страницу');
   }
-};
-
-export const onFormReset = function () {
-  addressField.readOnly = true;
-  addressField.value = TOKYO_COORDINATES.x + ', ' + TOKYO_COORDINATES.y;
 };
 
 const isEscEvent = function (evt) {
@@ -37,19 +36,18 @@ const isEscEvent = function (evt) {
 export const showMessage = function (parent, element) {
   parent.appendChild(element);
 
-  const screenClickHandler = function () {
+  const elementClickHandler = function () {
     element.classList.add('visually-hidden');
-    element.removeEventListener('click', screenClickHandler);
+    element.removeEventListener('click', elementClickHandler);
   }
 
-  const escClickHandler = function (evt) {
+  const documentКeydownHandler = function (evt) {
     if (isEscEvent(evt)) {
-      evt.preventDefault();
       element.classList.add('visually-hidden');
-      document.removeEventListener('keydown', escClickHandler);
+      document.removeEventListener('keydown', documentКeydownHandler);
     }
   }
 
-  element.addEventListener('click', screenClickHandler);
-  document.addEventListener('keydown', escClickHandler);
+  element.addEventListener('click', elementClickHandler);
+  document.addEventListener('keydown', documentКeydownHandler);
 };

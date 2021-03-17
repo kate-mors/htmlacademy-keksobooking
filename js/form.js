@@ -1,12 +1,11 @@
 import {sendData} from './api.js';
 import {TITLE_MAX_LENGTH, TITLE_MIN_LENGTH, PRICE_MAX, pricesPerNight, capacity} from './data.js';
-import {onSuccess, onFormReset, showMessage} from './on-event.js';
+import {checkResponse, onFormReset, showMessage} from './on-event.js';
 import {resetMainMarker} from './map.js';
 
 const mainBlock = document.querySelector('.promo');
 export const form = document.querySelector('.ad-form');
 const resetButton = form.querySelector('.ad-form__reset');
-export const submitButton = form.querySelector('ad-form__submit');
 const elementType = form.querySelector('#type');
 const elementPrice = form.querySelector('#price');
 const elementTimeIn = form.querySelector('#timein');
@@ -108,7 +107,7 @@ form.addEventListener('submit', function (evt) {
   const formData = new FormData(evt.target);
 
   sendData(formData)
-    .then(onSuccess)
+    .then(checkResponse)
     .then(() => showMessage(mainBlock, successMessage))
     .then(() => onFormReset())
     .then(() => form.reset())
