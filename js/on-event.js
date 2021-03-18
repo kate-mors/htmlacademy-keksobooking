@@ -1,4 +1,4 @@
-import {showAlert} from './util.js';
+import {showAlert} from './alert.js';
 import {addressField} from './form.js';
 import {TOKYO_COORDINATES, FLOAT_DIGITS} from './data.js';
 import {enableElements} from './disable.js';

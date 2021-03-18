@@ -37,6 +37,7 @@ export const PIN = {
 }
 
 //словари
+
 export const listingTypes = {
   'flat': 'Квартира',
   'bungalow': 'Бунгало',

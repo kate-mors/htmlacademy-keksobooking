@@ -1,11 +1,5 @@
 import {disableElements} from './disable.js';
-import {
-  TOKYO_COORDINATES,
-  ZOOM,
-  MAIN_PIN,
-  PIN,
-  SLICE
-} from './data.js';
+import {TOKYO_COORDINATES, ZOOM, MAIN_PIN, PIN, SLICE} from './data.js';
 import {createSimilarCard} from './new-cards.js';
 import {onMapLoad, onMarkerMoved} from './on-event.js';
 import {getData} from './api.js';
@@ -21,6 +15,7 @@ if (window.L) {
   map = L.map('map-canvas', {
     dragging: !L.Browser.mobile,
     tap: false,
+    scrollWheelZoom: false,
   });
   const mainPinIcon = L.icon({
     iconUrl: 'img/main-pin.svg',
