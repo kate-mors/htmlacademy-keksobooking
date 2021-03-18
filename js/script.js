@@ -1,3 +1,3 @@
-import './new-cards.js';
-import './form.js';
-import './map.js';
+import {createMap} from './map.js';
+
+createMap();
