@@ -1,60 +1,4 @@
-export const AVATAR_INDEX = {
-  min: 1,
-  max: 8,
-};
-
-export const LOCATION_X = {
-  min: 35.65000,
-  max: 35.70000,
-};
-
-export const LOCATION_Y = {
-  min: 139.70000,
-  max: 139.80000,
-};
-
 export const FLOAT_DIGITS = 5;
-
-export const PRICE = {
-  min: 100,
-  max: 1000,
-};
-
-export const ROOMS = {
-  min: 1,
-  max: 20,
-};
-
-export const GUESTS = {
-  min: 1,
-  max: 20,
-};
-
-export const TITLES_LIST = [
-  'Rustic Private Cottage with King Bed and Oceanside View.',
-  'Luxury Beach House Perfect for Romantic Weekend Getaway.',
-  'Enjoy Sunsets at Fully Equipped 2BR Condo at the Beach.',
-];
-
-export const TYPES_LIST = ['palace', 'flat', 'house', 'bungalow'];
-
-export const CHECKIN_TIME_LIST = ['12:00', '13:00', '14:00'];
-
-export const FEATURES_LIST = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
-
-export const DESCRIPTIONS_LIST = [
-  'This bright loft is perfect to relax, just up the road from the heart of the city.',
-  'Have a glass of wine while enjoying Netflix on the comfortable sofa after exploring local culture.',
-  '10 minute bus ride to downtown. Super safe and quiet neighborhood.',
-];
-
-export const PHOTOS_LIST = [
-  'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
-  'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
-  'http://o0.github.io/assets/images/tokyo/hotel3.jpg',
-];
-
-export const SIMILAR_LISTINGS_COUNT = 10;
 
 export const ROOMS_LIST = ['комната', 'комнаты', 'комнат'];
 
@@ -72,8 +16,6 @@ export const TITLE_MIN_LENGTH = 3;
 export const TITLE_MAX_LENGTH = 100;
 
 export const PRICE_MAX = 1000000;
-
-export const Z_INDEX = 500;
 
 //настройки координат карты
 
