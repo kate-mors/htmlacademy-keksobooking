@@ -42,13 +42,13 @@ export const showMessage = function (parent, element) {
   };
 
 
-  const documentКeydownHandler = function (evt) {
+  const documentKeydownHandler = function (evt) {
     if (isEscEvent(evt)) {
       element.remove();
-      document.removeEventListener('keydown', documentКeydownHandler);
+      document.removeEventListener('keydown', documentKeydownHandler);
     }
   };
 
   element.addEventListener('click', elementClickHandler);
-  document.addEventListener('keydown', documentКeydownHandler);
+  document.addEventListener('keydown', documentKeydownHandler);
 };

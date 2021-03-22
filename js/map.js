@@ -1,9 +1,10 @@
 import {disableElements} from './disable.js';
-import {TOKYO_COORDINATES, ZOOM, MAIN_PIN, PIN, SLICE} from './data.js';
+import {TOKYO_COORDINATES, ZOOM, MAIN_PIN, PIN, SLICE, RENDER_DELAY} from './data.js';
 import {createSimilarCard} from './new-cards.js';
 import {onMapLoad, onMarkerMoved} from './on-event.js';
 import {getData} from './api.js';
 import {mapFilters, filterHousing} from './filter.js';
+/* global _:readonly */
 
 let L = window.L;
 let map;
@@ -67,10 +68,10 @@ export const createMap = function () {
       onMapLoad();
       getData((data) => {
         createSimilarPopups(data.slice(SLICE.min, SLICE.max));
-        mapFilters.addEventListener('change', function () {
+        mapFilters.addEventListener('change', _.debounce(() => {
           removePopups();
           createSimilarPopups(filterHousing(data));
-        })
+        }, RENDER_DELAY))
       })
     })
     .setView({
