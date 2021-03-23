@@ -1,16 +1,16 @@
-import {enableElements} from './disable.js';
+import {showAlert} from './alert.js';
 import {addressField} from './form.js';
 import {TOKYO_COORDINATES, FLOAT_DIGITS} from './data.js';
-import { showAlert } from './alert.js';
-
-export const onFormReset = function () {
-  addressField.readOnly = true;
-  addressField.value = TOKYO_COORDINATES.x + ', ' + TOKYO_COORDINATES.y;
-};
+import {enableElements} from './disable.js';
 
 export const onMapLoad = function() {
   enableElements();
   onFormReset();
+};
+
+export const onFormReset = function () {
+  addressField.readOnly = true;
+  addressField.value = TOKYO_COORDINATES.x + ', ' + TOKYO_COORDINATES.y;
 };
 
 export const onMarkerMoved = function (evt) {
@@ -37,17 +37,18 @@ export const showMessage = function (parent, element) {
   parent.appendChild(element);
 
   const elementClickHandler = function () {
-    element.classList.add('visually-hidden');
+    element.remove();
     element.removeEventListener('click', elementClickHandler);
-  }
+  };
 
-  const documentКeydownHandler = function (evt) {
+
+  const documentKeydownHandler = function (evt) {
     if (isEscEvent(evt)) {
-      element.classList.add('visually-hidden');
-      document.removeEventListener('keydown', documentКeydownHandler);
+      element.remove();
+      document.removeEventListener('keydown', documentKeydownHandler);
     }
-  }
+  };
 
   element.addEventListener('click', elementClickHandler);
-  document.addEventListener('keydown', documentКeydownHandler);
+  document.addEventListener('keydown', documentKeydownHandler);
 };

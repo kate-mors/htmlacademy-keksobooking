@@ -9,6 +9,8 @@ export const SLICE = {
   max: 10,
 };
 
+export const RENDER_DELAY = 500;
+
 //валидация формы
 
 export const TITLE_MIN_LENGTH = 3;
@@ -37,6 +39,7 @@ export const PIN = {
 }
 
 //словари
+
 export const listingTypes = {
   'flat': 'Квартира',
   'bungalow': 'Бунгало',
@@ -56,4 +59,10 @@ export const capacity = {
   1: [1, 2],
   2: [0, 1, 2],
   3: [3],
+};
+
+export const priceRange = {
+  low: 10000,
+  middle: 50000,
+  high: 1000000,
 };
