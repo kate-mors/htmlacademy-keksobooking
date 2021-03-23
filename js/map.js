@@ -12,7 +12,7 @@ let mainMarker;
 let smallMarker;
 export let createSimilarPopups;
 
-if (window.L) {
+if (L) {
   map = L.map('map-canvas', {
     dragging: !L.Browser.mobile,
     tap: false,
@@ -64,11 +64,11 @@ if (window.L) {
 
 export const createMap = function () {
   map
-    .on('load', () => {
+    .on('load', function () {
       onMapLoad();
-      getData((data) => {
+      getData(function (data) {
         createSimilarPopups(data.slice(SLICE.min, SLICE.max));
-        mapFilters.addEventListener('change', _.debounce(() => {
+        mapFilters.addEventListener('change', _.debounce(function () {
           removePopups();
           createSimilarPopups(filterHousing(data));
         }, RENDER_DELAY))
