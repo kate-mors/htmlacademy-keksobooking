@@ -4,7 +4,7 @@ import {createSimilarCard} from './new-cards.js';
 import {onMapLoad, onMarkerMoved} from './on-event.js';
 import {getData} from './api.js';
 import {mapFilters, filterHousing} from './filter.js';
-/* global _:readonly */
+import _ from 'lodash';
 
 let L = window.L;
 let map;
