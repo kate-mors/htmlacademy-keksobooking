@@ -571,14 +571,24 @@ fieldset {
 }
 
 .ad-form__photo {
-  margin-right: 10px;
-  margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 
-  width: 70px;
+  margin-right: 10px;
+  padding: 0;
+
+  width: min-content;
   height: 70px;
 
-  background-color: #e4e4de;
+  text-align: center;
+
   border-radius: 5px;
+  background-color: #dadada;
 }
 
 .ad-form__element--submit {
@@ -1026,3 +1036,13 @@ fieldset {
 .hidden {
   display: none;
 }
+
+/**
+ * Фотографии объявлений пользователей
+ */
+
+ .ad-photo__preview {
+   width: 40px;
+   height: 44px;
+   margin: 0 15px;
+ }
