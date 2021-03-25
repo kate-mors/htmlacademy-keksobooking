@@ -1,4 +1,4 @@
-import {createMap} from './map.js';
 import './avatar.js';
+import {createMap} from './map.js';
 
 createMap();

@@ -1,8 +1,8 @@
 const FILE_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
 
 const avatarInput = document.querySelector('.ad-form__field input[type=file]');
-const avatarPreview = document.querySelector('.ad-form-header__avatar');
-const adPhoto = document.querySelector('.ad-form__photo');
+export const avatarPreview = document.querySelector('.ad-form-header__avatar');
+export const adPhoto = document.querySelector('.ad-form__photo');
 const adPhotoInput = document.querySelector('.ad-form__upload input[type=file]');
 const adPhotoPreviewTemplate = document.querySelector('#ad-photo__template').content.querySelector('.ad-photo__preview');
 
