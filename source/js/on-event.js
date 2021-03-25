@@ -2,6 +2,7 @@ import {showAlert} from './alert.js';
 import {addressField} from './form.js';
 import {TOKYO_COORDINATES, FLOAT_DIGITS} from './data.js';
 import {enableElements} from './disable.js';
+import {avatarPreview, adPhoto} from './avatar.js';
 
 export const onMapLoad = function() {
   enableElements();
@@ -11,6 +12,8 @@ export const onMapLoad = function() {
 export const onFormReset = function () {
   addressField.readOnly = true;
   addressField.value = TOKYO_COORDINATES.x + ', ' + TOKYO_COORDINATES.y;
+  avatarPreview.src = 'img/muffin-grey.svg';
+  adPhoto.innerHTML = '';
 };
 
 export const onMarkerMoved = function (evt) {

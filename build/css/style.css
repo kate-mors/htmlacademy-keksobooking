@@ -583,6 +583,7 @@ fieldset {
   padding: 0;
 
   width: min-content;
+  min-width: 70px;
   height: 70px;
 
   text-align: center;
