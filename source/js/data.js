@@ -1,5 +1,3 @@
-export const FLOAT_DIGITS = 5;
-
 export const ROOMS_LIST = ['комната', 'комнаты', 'комнат'];
 
 export const GUESTS_LIST = ['гостя', 'гостей', 'гостей'];
@@ -9,11 +7,13 @@ export const SLICE = {
   max: 10,
 };
 
+export const TIMEOUT = 5000;
+
 export const RENDER_DELAY = 500;
 
 //валидация формы
 
-export const TITLE_MIN_LENGTH = 3;
+export const TITLE_MIN_LENGTH = 30;
 
 export const TITLE_MAX_LENGTH = 100;
 

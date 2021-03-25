@@ -1,3 +1,5 @@
+import {TIMEOUT} from './data.js';
+
 export const showAlert = (message) => {
   const alertContainer = document.createElement('div');
   alertContainer.style.zIndex = '100';
@@ -14,5 +16,5 @@ export const showAlert = (message) => {
 
   setTimeout(() => {
     alertContainer.remove();
-  }, 5000);
+  }, TIMEOUT);
 };

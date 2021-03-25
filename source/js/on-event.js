@@ -11,7 +11,7 @@ export const onMapLoad = function() {
 
 export const onFormReset = function () {
   addressField.readOnly = true;
-  addressField.value = TOKYO_COORDINATES.x + ', ' + TOKYO_COORDINATES.y;
+  addressField.value = `${TOKYO_COORDINATES.x}, ${TOKYO_COORDINATES.y}`;
   avatarPreview.src = 'img/muffin-grey.svg';
   adPhoto.innerHTML = '';
 };

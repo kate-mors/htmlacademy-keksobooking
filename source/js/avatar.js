@@ -10,14 +10,14 @@ const appendImage = function (fileChooser, preview) {
   const file = fileChooser.files[0];
   const fileName = file.name.toLowerCase();
 
-  const matches = FILE_TYPES.some((it) => {
+  const matches = FILE_TYPES.some(function (it) {
     return fileName.endsWith(it);
   });
 
   if (matches) {
     const reader = new FileReader();
 
-    reader.addEventListener('load', () => {
+    reader.addEventListener('load', function () {
       preview.src = reader.result;
     });
     reader.readAsDataURL(file);

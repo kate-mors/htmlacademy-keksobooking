@@ -108,8 +108,8 @@ form.addEventListener('submit', function (evt) {
   sendData(formData)
     .then(checkResponse)
     .then(() => showMessage(mainBlock, successMessage))
-    .then(() => onFormReset())
     .then(() => form.reset())
+    .then(() => onFormReset())
     .then(() => resetMainMarker())
     .catch(() => showMessage(mainBlock, errorMessage))
 });
